@@ -3,19 +3,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap');
 
-/* OpenDyslexic Font - Self-hosted */
+/* OpenDyslexic Font - Using public CDN */
 @font-face {
     font-family: 'OpenDyslexic';
-    src: url('/fonts/OpenDyslexic-Regular.otf') format('opentype');
+    src: url('https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/fonts/OpenDyslexic-Regular.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'OpenDyslexic';
-    src: url('/fonts/OpenDyslexic-Bold.otf') format('opentype');
+    src: url('https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/fonts/OpenDyslexic-Bold.otf') format('opentype');
     font-weight: bold;
     font-style: normal;
+    font-display: swap;
 }
 
 /* Font variables */
