@@ -1,0 +1,145 @@
+.text-display {
+    margin: 1rem;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-height: 200px;
+}
+
+.text-display h2 {
+    margin-top: 0;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.display-content {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
+}
+
+/* Dyslexia-friendly styling */
+.dyslexia-friendly {
+    font-family: 'OpenDyslexic', Arial, sans-serif;
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+    word-spacing: 0.1em;
+}
+
+/* High contrast mode */
+.high-contrast {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+}
+
+/* Text highlight styles */
+.highlight-syllables .syllable {
+    background-color: rgba(255, 255, 0, 0.3);
+    margin: 0 1px;
+}
+
+/* Focus mode styles */
+.text-display.focus-mode {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+/* Inverse mode styles */
+.text-display.inverse-mode {
+    background-color: #121212;
+    color: #ffffff;
+    border: 1px solid #333;
+}
+
+.text-display.focus-mode.inverse-mode {
+    background-color: #121212;
+}
+
+.focus-mode-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.focus-chunk {
+    margin: 30px 0;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 80%;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    border-left: 4px solid #3498db;
+}
+
+.focus-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.chunk-counter {
+    margin: 0 20px;
+    font-size: 16px;
+    color: #666;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.words-info {
+    font-size: 12px;
+    opacity: 0.8;
+    margin-top: 3px;
+}
+
+.focus-control-button {
+    padding: 8px 16px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s;
+}
+
+.focus-control-button:hover {
+    background-color: #2980b9;
+}
+
+.focus-control-button:disabled {
+    background-color: #bdc3c7;
+    cursor: not-allowed;
+}
+
+.progress-bar {
+    width: 80%;
+    height: 6px;
+    background-color: #ecf0f1;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.progress-indicator {
+    height: 100%;
+    background-color: #3498db;
+    transition: width 0.3s ease;
+}

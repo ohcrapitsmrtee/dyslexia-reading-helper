@@ -1,0 +1,166 @@
+.settings-panel-container {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+}
+
+.settings-toggle-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.settings-toggle-button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.settings-panel {
+    position: absolute;
+    right: 0;
+    top: 50px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    animation: slidein 0.2s ease-in-out;
+    overflow: hidden;
+    border: 1px solid #ddd;
+}
+
+@keyframes slidein {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.settings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #eee;
+}
+
+.settings-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    padding: 0;
+    margin: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.close-button:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #333;
+}
+
+.settings-content {
+    padding: 20px;
+}
+
+.preferences-list {
+    margin-bottom: 20px;
+}
+
+.preference-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.preference-item:last-child {
+    border-bottom: none;
+}
+
+.preference-label {
+    font-weight: 600;
+    color: #555;
+}
+
+.preference-value {
+    color: #333;
+}
+
+.clear-preferences-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 15px;
+    transition: all 0.2s;
+}
+
+.clear-preferences-button:hover {
+    background-color: #c0392b;
+}
+
+.clear-preferences-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.preferences-cleared {
+    background-color: #e8f7e8;
+    border: 1px solid #d4edda;
+    color: #155724;
+    padding: 15px;
+    border-radius: 4px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.refresh-note {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-top: 5px;
+}
+
+.no-preferences {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+}
+
+/* Responsive design for small screens */
+@media (max-width: 480px) {
+    .settings-panel {
+        width: 90vw;
+        right: -10px;
+    }
+    
+    .settings-toggle-button {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+}

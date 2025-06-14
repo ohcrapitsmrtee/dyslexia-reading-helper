@@ -1,0 +1,28 @@
+/* Dyslexia-friendly fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap');
+
+/* OpenDyslexic Font - Self-hosted */
+@font-face {
+    font-family: 'OpenDyslexic';
+    src: url('/fonts/OpenDyslexic-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'OpenDyslexic';
+    src: url('/fonts/OpenDyslexic-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* Font variables */
+:root {
+    --font-default: Arial, Helvetica, sans-serif;
+    --font-lexend: 'Lexend', sans-serif;
+    --font-opendyslexic: 'OpenDyslexic', Arial, sans-serif;
+    --font-roboto: 'Roboto', sans-serif;
+    --font-opensans: 'Open Sans', sans-serif;
+}

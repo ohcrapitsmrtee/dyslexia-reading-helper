@@ -1,0 +1,102 @@
+@import url('../styles/fonts.css');
+
+body {
+    font-family: var(--font-default);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Font Family Classes */
+.font-default {
+    font-family: var(--font-default);
+    letter-spacing: normal;
+    word-spacing: normal;
+}
+
+.font-lexend {
+    font-family: var(--font-lexend);
+    letter-spacing: 0.02em;
+    word-spacing: 0.05em;
+}
+
+.font-opendyslexic {
+    font-family: var(--font-opendyslexic);
+    letter-spacing: 0.05em;
+    word-spacing: 0.15em;
+}
+
+.font-roboto {
+    font-family: var(--font-roboto);
+    letter-spacing: 0.01em;
+    word-spacing: 0.05em;
+}
+
+.font-opensans {
+    font-family: var(--font-opensans);
+    letter-spacing: 0.025em;
+    word-spacing: 0.1em;
+}
+
+.app-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+
+.text-input {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.text-display {
+    font-size: 24px;
+    color: #000;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.control-panel {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #f1f1f1;
+    border-top: 1px solid #ccc;
+}

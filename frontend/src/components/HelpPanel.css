@@ -1,0 +1,223 @@
+.help-panel-container {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+}
+
+.help-toggle-button {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.help-toggle-button:hover {
+    background-color: #219d54;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.help-panel {
+    position: absolute;
+    left: 0;
+    top: 50px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    max-height: 80vh;
+    overflow-y: auto;
+    animation: slidein 0.2s ease-in-out;
+    border: 1px solid #ddd;
+}
+
+@keyframes slidein {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.help-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.help-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.help-tabs {
+    display: flex;
+    border-bottom: 1px solid #eee;
+    background-color: #f8f9fa;
+    position: sticky;
+    top: 56px;
+    z-index: 5;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 12px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #666;
+    transition: all 0.2s;
+    border-bottom: 3px solid transparent;
+}
+
+.tab-button:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+    color: #333;
+}
+
+.tab-button.active {
+    color: #3498db;
+    border-bottom-color: #3498db;
+    font-weight: 500;
+}
+
+.help-content {
+    padding: 20px;
+}
+
+.tab-content h4 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    color: #333;
+    font-size: 18px;
+}
+
+.feature-list, .tips-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.feature-list li, .tips-list li {
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #eee;
+}
+
+.feature-list li:last-child, .tips-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.feature-list strong, .tips-list strong {
+    display: block;
+    margin-bottom: 6px;
+    color: #333;
+    font-size: 16px;
+}
+
+.feature-list p, .tips-list p {
+    margin: 0;
+    color: #666;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    padding: 0;
+    margin: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.close-button:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #333;
+}
+
+.font-samples {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.font-sample {
+    padding: 15px;
+    border-radius: 6px;
+    background-color: #f8f9fa;
+    border: 1px solid #eee;
+}
+
+.font-sample h5 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.font-sample p {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+.sample-text {
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: white;
+    border: 1px solid #ddd;
+}
+
+.default-font .sample-text {
+    font-family: var(--font-default);
+}
+
+.lexend-font .sample-text {
+    font-family: var(--font-lexend);
+}
+
+.opendyslexic-font .sample-text {
+    font-family: var(--font-opendyslexic);
+}
+
+.roboto-font .sample-text {
+    font-family: var(--font-roboto);
+}
+
+.opensans-font .sample-text {
+    font-family: var(--font-opensans);
+}
+
+/* Responsive design for small screens */
+@media (max-width: 480px) {
+    .help-panel {
+        width: 90vw;
+        left: -10px;
+    }
+    
+    .help-toggle-button {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+}
