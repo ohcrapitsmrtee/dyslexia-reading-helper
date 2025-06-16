@@ -12,40 +12,83 @@ const TextDisplay = ({ text, fontSize, focusMode, wordsPerChunk = 4, inverseMode
             setWordChunks([]);
             return;
         }
-        
-        // Split text into words
-        const words = text.split(/\s+/).filter(word => word.trim() !== '');
-        
-        // Group words into chunks based on user-defined wordsPerChunk
+        // Split text into lines
+        const lines = text.split(/\r?\n/);
         const chunks = [];
-        
-        for (let i = 0; i < words.length; i += wordsPerChunk) {
-            chunks.push(words.slice(i, i + wordsPerChunk).join(' '));
+        let currentChunk = [];
+        let wordCount = 0;
+        for (let line of lines) {
+            const words = line.split(/\s+/).filter(word => word.trim() !== '');
+            for (let i = 0; i < words.length; i++) {
+                const word = words[i];
+                currentChunk.push(word);
+                wordCount++;
+                // End chunk if word ends with strong punctuation or chunk is full
+                if (/[:.!?]$/.test(word) || wordCount >= wordsPerChunk) {
+                    chunks.push(currentChunk.join(' '));
+                    currentChunk = [];
+                    wordCount = 0;
+                }
+            }
+            // Always end chunk at line break if any words remain
+            if (currentChunk.length > 0) {
+                chunks.push(currentChunk.join(' '));
+                currentChunk = [];
+                wordCount = 0;
+            }
         }
-        
         setWordChunks(chunks);
         setCurrentChunkIndex(0);
     }, [text, wordsPerChunk]);
     
-    // Handle keyboard navigation for focus mode
+    // Navigation helpers
+    const goToNextChunk = () => {
+        setCurrentChunkIndex(prev => prev < wordChunks.length - 1 ? prev + 1 : prev);
+    };
+    const goToPreviousChunk = () => {
+        setCurrentChunkIndex(prev => prev > 0 ? prev - 1 : prev);
+    };
+
+    // Handle keyboard and mouse navigation for focus mode
     useEffect(() => {
+        const isInputFocused = () => {
+            const active = document.activeElement;
+            return active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.isContentEditable);
+        };
+
         const handleKeyPress = (e) => {
-            if (!focusMode) return;
-            
-            if (e.key === 'ArrowRight' || e.key === ' ') {
-                // Next chunk
-                setCurrentChunkIndex(prev => 
-                    prev < wordChunks.length - 1 ? prev + 1 : prev
-                );
+            if (!focusMode || isInputFocused()) return;
+            if (e.key === 'ArrowDown') {
+                goToNextChunk();
+                e.preventDefault();
+            } else if (e.key === 'ArrowUp') {
+                goToPreviousChunk();
+                e.preventDefault();
+            } else if (e.key === 'ArrowRight' || e.key === ' ') {
+                goToNextChunk();
+                e.preventDefault();
             } else if (e.key === 'ArrowLeft') {
-                // Previous chunk
-                setCurrentChunkIndex(prev => prev > 0 ? prev - 1 : prev);
+                goToPreviousChunk();
+                e.preventDefault();
             }
         };
-        
-        document.addEventListener('keydown', handleKeyPress);
+
+        const handleWheel = (e) => {
+            if (!focusMode || isInputFocused()) return;
+            if (e.deltaY > 0) {
+                goToNextChunk();
+                e.preventDefault();
+            } else if (e.deltaY < 0) {
+                goToPreviousChunk();
+                e.preventDefault();
+            }
+        };
+
+        document.addEventListener('keydown', handleKeyPress, { passive: false });
+        document.addEventListener('wheel', handleWheel, { passive: false });
         return () => {
             document.removeEventListener('keydown', handleKeyPress);
+            document.removeEventListener('wheel', handleWheel);
         };
     }, [focusMode, wordChunks.length]);
     

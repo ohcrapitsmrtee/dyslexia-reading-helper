@@ -259,68 +259,7 @@ const ControlPanel = ({
                 </div>
             </div>
             
-            <div className="navigation-controls">
-                <button 
-                    onClick={() => handleNavigate('up')}
-                    style={{ 
-                        padding: '8px 16px', 
-                        fontSize: '16px', 
-                        margin: '0 5px',
-                        backgroundColor: '#27ae60',
-                        color: 'white',
-                        border: 'none',
-                        borderRadius: '4px',
-                        cursor: 'pointer'
-                    }}
-                >
-                    ↑
-                </button>
-                <button 
-                    onClick={() => handleNavigate('down')}
-                    style={{ 
-                        padding: '8px 16px', 
-                        fontSize: '16px', 
-                        margin: '0 5px',
-                        backgroundColor: '#27ae60',
-                        color: 'white',
-                        border: 'none',
-                        borderRadius: '4px',
-                        cursor: 'pointer'
-                    }}
-                >
-                    ↓
-                </button>
-            <button 
-                onClick={() => handleNavigate('up')}
-                style={{ 
-                    padding: '8px 16px', 
-                    fontSize: '16px', 
-                    margin: '0 5px',
-                    backgroundColor: '#27ae60',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '4px',
-                    cursor: 'pointer'
-                }}
-            >
-                ↑
-            </button>
-            <button 
-                onClick={() => handleNavigate('down')}
-                style={{ 
-                    padding: '8px 16px', 
-                    fontSize: '16px', 
-                    margin: '0 5px',
-                    backgroundColor: '#27ae60',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '4px',
-                    cursor: 'pointer'
-                }}
-            >
-                ↓
-            </button>
-            </div>
+            {/* Remove navigation arrows (up/down) as they are no longer needed */}
         </div>
     );
 };
