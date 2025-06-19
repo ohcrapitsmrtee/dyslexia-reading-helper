@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/dyslexia-reading-helper/static/css/main.0f6b4eff.chunk.css",
+    "main.css": "/dyslexia-reading-helper/static/css/main.7496beef.chunk.css",
     "main.js": "/dyslexia-reading-helper/static/js/main.35efcf1e.chunk.js",
     "main.js.map": "/dyslexia-reading-helper/static/js/main.35efcf1e.chunk.js.map",
     "runtime-main.js": "/dyslexia-reading-helper/static/js/runtime-main.e45db053.js",
@@ -8,13 +8,13 @@
     "static/js/2.5e0f1936.chunk.js": "/dyslexia-reading-helper/static/js/2.5e0f1936.chunk.js",
     "static/js/2.5e0f1936.chunk.js.map": "/dyslexia-reading-helper/static/js/2.5e0f1936.chunk.js.map",
     "index.html": "/dyslexia-reading-helper/index.html",
-    "static/css/main.0f6b4eff.chunk.css.map": "/dyslexia-reading-helper/static/css/main.0f6b4eff.chunk.css.map",
+    "static/css/main.7496beef.chunk.css.map": "/dyslexia-reading-helper/static/css/main.7496beef.chunk.css.map",
     "static/js/2.5e0f1936.chunk.js.LICENSE.txt": "/dyslexia-reading-helper/static/js/2.5e0f1936.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.e45db053.js",
     "static/js/2.5e0f1936.chunk.js",
-    "static/css/main.0f6b4eff.chunk.css",
+    "static/css/main.7496beef.chunk.css",
     "static/js/main.35efcf1e.chunk.js"
   ]
 }
