@@ -7,10 +7,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "download-fonts": "node scripts/download-fonts.js",
+    "eject": "react-scripts eject",    "download-fonts": "node scripts/download-fonts.js",
     "postinstall": "npm run download-fonts",
-    "predeploy": "npm run build",
+    "predeploy": "npm run build && copy .nojekyll build\\.nojekyll",
     "deploy": "gh-pages -d build"
   },
   "dependencies": {
@@ -23,7 +22,7 @@
     "eslint-plugin-react": "^7.27.1",
     "gh-pages": "^6.3.0"
   },
-  "homepage": "https://ohcrapitsmrtee.github.io/dyslexia-reading-helper",
+  "homepage": "/",
   "license": "MIT",
   "browserslist": {
     "production": [
