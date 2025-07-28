@@ -27,6 +27,12 @@
     resize: vertical;
     min-height: 150px;
     transition: border-color 0.3s;
+    box-sizing: border-box;
+    background-color: white;
+    color: #333;
+    outline: none;
+    position: relative;
+    z-index: 1;
 }
 
 .text-input textarea:focus {

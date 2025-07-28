@@ -48,7 +48,56 @@
     align-items: center;
     min-height: 300px;
     background-color: #f8f9fa;
-    transition: all 0.3s ease;
+}
+
+/* Document context section styles */
+.document-context-section {
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: #495057;
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    resize: vertical;
+    overflow: hidden;
+    min-height: 150px;
+    max-height: 500px;
+}
+
+.context-title {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.context-position {
+    font-size: 0.9rem;
+    color: #ced4da;
+}
+
+.context-display {
+    height: calc(100% - 40px);
+    overflow-y: auto;
+    line-height: 1.6;
+    font-size: 0.9rem;
+    resize: none;
+}
+
+.highlighted-chunk {
+    background-color: #ffc107 !important;
+    color: #000 !important;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.full-text-display {
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }
 
 /* Inverse mode styles */
@@ -79,11 +128,14 @@
     text-align: center;
     width: 80%;
     min-height: 100px;
+    max-height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 500;
     border-left: 4px solid #3498db;
+    resize: both;
+    overflow: auto;
 }
 
 .focus-controls {
@@ -142,4 +194,59 @@
     height: 100%;
     background-color: #3498db;
     transition: width 0.3s ease;
+}
+
+/* Context preview styles */
+.context-preview {
+    transition: all 0.3s ease;
+    border-left: 4px solid #3498db;
+    position: relative;
+}
+
+.context-preview:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.context-title {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.context-text {
+    line-height: 1.6;
+}
+
+.context-chunk {
+    display: inline;
+    transition: all 0.2s ease;
+    border-radius: 4px;
+}
+
+.context-chunk.current-chunk {
+    animation: pulse 1.5s ease-in-out infinite alternate;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.3);
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.02);
+    }
+}
+
+/* Responsive adjustments for context preview */
+@media (max-width: 768px) {
+    .context-preview {
+        padding: 10px;
+        font-size: 12px;
+        margin-bottom: 15px;
+    }
+    
+    .focus-chunk {
+        width: 95%;
+        padding: 15px;
+    }
 }

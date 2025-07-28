@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './TextInput.css';
 
-const TextInput = ({ onTextChange }) => {
+const TextInput = React.forwardRef((props, ref) => {
     const [inputText, setInputText] = useState('');
 
     const sampleText = `Dyslexia is a learning difference that primarily affects reading, writing, and spelling skills. People with dyslexia have trouble matching the letters they see on the page with the sounds those letters make. But it's not a problem with vision or intelligence. Most people with dyslexia have average or above-average intelligence.
@@ -10,18 +10,21 @@ Dyslexia is the most common learning disability, affecting about 20% of the popu
 
     const handleChange = (event) => {
         setInputText(event.target.value);
-        onTextChange(event.target.value);
     };
-    
+
     const loadSampleText = () => {
         setInputText(sampleText);
-        onTextChange(sampleText);
     };
-    
+
     const clearText = () => {
         setInputText('');
-        onTextChange('');
     };
+
+    // Expose the inputText value through ref
+    React.useImperativeHandle(ref, () => ({
+        getText: () => inputText,
+        setText: (text) => setInputText(text)
+    }));
 
     return (
         <div className="text-input-container">
@@ -32,6 +35,8 @@ Dyslexia is the most common learning disability, affecting about 20% of the popu
                     onChange={handleChange}
                     placeholder="Paste your text here or click 'Load Sample Text' to get started..."
                     rows="8"
+                    autoComplete="off"
+                    spellCheck="false"
                 />
             </div>
             <div className="button-container">
@@ -44,6 +49,8 @@ Dyslexia is the most common learning disability, affecting about 20% of the popu
             </div>
         </div>
     );
-};
+});
+
+TextInput.displayName = 'TextInput';
 
 export default TextInput;

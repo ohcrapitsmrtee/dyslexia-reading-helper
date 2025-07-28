@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import TextInput from './components/TextInput';
@@ -9,6 +9,8 @@ import HelpPanel from './components/HelpPanel';
 import './styles/main.css';
 
 const App = () => {
+    // Create ref for TextInput component
+    const textInputRef = useRef(null);
     // Load saved preferences or set defaults
     const loadSavedPreferences = () => {
         const savedPreferences = localStorage.getItem('dyslexiaHelperPreferences');
@@ -25,25 +27,24 @@ const App = () => {
     const savedPrefs = loadSavedPreferences();
     
     const [text, setText] = useState('');
+    const [currentPage, setCurrentPage] = useState('input'); // 'input' or 'reading'
     const [fontSize, setFontSize] = useState(savedPrefs?.fontSize || 24); // Default font size
     const [focusMode, setFocusMode] = useState(savedPrefs?.focusMode || false); // Focus mode state
     const [wordsPerChunk, setWordsPerChunk] = useState(savedPrefs?.wordsPerChunk || 4); // Words per chunk for focus mode
     const [inverseMode, setInverseMode] = useState(savedPrefs?.inverseMode || false); // Inverse color mode
     const [fontFamily, setFontFamily] = useState(savedPrefs?.fontFamily || 'default'); // Font family
-
-    const handleTextChange = (newText) => {
-        setText(newText);
-    };
+    
+    // Chunk state for context display
+    const [chunkInfo, setChunkInfo] = useState({
+        currentChunkIndex: 0,
+        wordChunks: [],
+        totalChunks: 0,
+        originalText: '',
+        chunkMappings: []
+    });
 
     const handleFontSizeChange = (newSize) => {
         setFontSize(newSize);
-    };
-
-    // Function to handle navigation (not implemented yet)
-    const handleNavigation = (direction) => {
-        console.log(`Navigation: ${direction}`);
-        // Implement scrolling or page navigation logic here
-        alert(`Navigation button clicked: ${direction}`);
     };
     
     // Function to handle focus mode toggle
@@ -70,6 +71,26 @@ const App = () => {
         setFontFamily(newFont);
     };
     
+    // Function to handle chunk information changes
+    const handleChunkChange = (newChunkInfo) => {
+        setChunkInfo(newChunkInfo);
+    };
+
+    // Navigation functions for page switching
+    const goToReadingPage = () => {
+        const inputText = textInputRef.current?.getText() || '';
+        if (inputText.trim()) {
+            setText(inputText);
+            setCurrentPage('reading');
+        } else {
+            alert('Please enter or paste some text first!');
+        }
+    };
+
+    const goToInputPage = () => {
+        setCurrentPage('input');
+    };
+    
     // Save preferences to local storage
     useEffect(() => {
         const preferences = {
@@ -89,24 +110,56 @@ const App = () => {
             <Header />
             <SettingsPanel />
             <HelpPanel />
-            <TextInput onTextChange={handleTextChange} />
-            <ControlPanel 
-                onTextSizeChange={handleFontSizeChange} 
-                onNavigate={handleNavigation}
-                onFocusModeToggle={handleFocusModeToggle}
-                onWordsPerChunkChange={handleWordsPerChunkChange}
-                onInverseModeToggle={handleInverseModeToggle}
-                onFontFamilyChange={handleFontFamilyChange}
-                fontFamily={fontFamily}
-            />
-            <TextDisplay 
-                text={text} 
-                fontSize={fontSize} 
-                focusMode={focusMode}
-                wordsPerChunk={wordsPerChunk}
-                inverseMode={inverseMode}
-                fontFamily={fontFamily}
-            />
+            
+            {currentPage === 'input' && (
+                <div className="input-page">
+                    <TextInput ref={textInputRef} />
+                    
+                    {/* Navigation button to go to reading page */}
+                    <div className="page-navigation">
+                        <button 
+                            className="nav-button primary-nav" 
+                            onClick={goToReadingPage}
+                        >
+                            Start Reading →
+                        </button>
+                    </div>
+                </div>
+            )}
+
+            {currentPage === 'reading' && (
+                <div className="reading-page">
+                    {/* Navigation button to go back to input */}
+                    <div className="page-navigation">
+                        <button 
+                            className="nav-button secondary-nav" 
+                            onClick={goToInputPage}
+                        >
+                            ← Back to Edit Text
+                        </button>
+                    </div>
+
+                    <ControlPanel 
+                        onTextSizeChange={handleFontSizeChange} 
+                        onFocusModeToggle={handleFocusModeToggle}
+                        onWordsPerChunkChange={handleWordsPerChunkChange}
+                        onInverseModeToggle={handleInverseModeToggle}
+                        onFontFamilyChange={handleFontFamilyChange}
+                        fontFamily={fontFamily}
+                    />
+                    
+                    <TextDisplay 
+                        text={text} 
+                        fontSize={fontSize} 
+                        focusMode={focusMode}
+                        wordsPerChunk={wordsPerChunk}
+                        inverseMode={inverseMode}
+                        fontFamily={fontFamily}
+                        onChunkChange={handleChunkChange}
+                    />
+                </div>
+            )}
+            
             <Footer />
         </div>
     );
